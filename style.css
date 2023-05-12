@@ -1,0 +1,83 @@
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+@font-face {
+	font-family: "digital-7_monomono";
+	src: url("assets/font/digital-7_mono-webfont.woff2") format("woff2"),
+		url("assets/font/digital-7_mono-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+	font-family: "digital-7_monomono";
+	background: #383838;
+}
+.screen {
+	width: auto;
+	height: 100%;
+	font-size: 50px;
+	background: #1a5612;
+	border-radius: 5px;
+	box-shadow: inset 5px 5px 3px #0a2207, inset -5px -5px 3px #2a8a1d;
+	padding: 10px;
+	overflow: hidden;
+}
+.calculator-body {
+	margin: 100px auto;
+	width: 300px;
+	height: 500px;
+	border: 2px solid black;
+	border-radius: 10px;
+	background: #dbdbdb;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+}
+.calculator-screen-container {
+	width: 80%;
+	height: 16%;
+	margin-top: 10%;
+}
+.calculator-button-container {
+	width: auto;
+	height: 60%;
+	display: grid;
+	grid-template-columns: repeat(4, 50px);
+	grid-gap: 10px;
+	margin: auto;
+	padding: 5px;
+}
+.btn {
+	height: 50px;
+	width: 50px;
+	border-radius: 5px;
+	box-shadow: 1px 1px #999999, 2px 2px #999999, 3px 3px #999999,
+		4px 4px #999999, 5px 5px #999999, 8px 8px 10px #636363;
+	outline: none;
+	border: 1px solid #e26200;
+	font-weight: 900;
+}
+.btn:active {
+	box-shadow: 8px 8px 10px #636363;
+	transform: translate(3px, 3px);
+}
+.calculator-button-container :nth-child(1) {
+	grid-column: 1 / 2;
+	background: #a50e0e;
+}
+.calculator-button-container :nth-child(2) {
+	grid-column: 3 / 4;
+}
+.calculator-button-container :nth-child(15) {
+	grid-row: span 2;
+	height: 100%;
+}
+.calculator-button-container :nth-child(17) {
+	background: #72e08c;
+}
