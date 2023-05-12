@@ -1,27 +1,24 @@
 const btn = document.querySelectorAll(".btn");
 const screen = document.querySelector(".screen");
-let premierTerme = "";
-let secondTerme = "";
+let termes = "";
+let termesArray = [];
+let result = 0;
 
 for (let i = 0; i < btn.length; i++) {
 	btn[i].addEventListener("click", (e) => {
 		const val = btn[i].value;
 		if (
-			premierTerme.length < 9 &&
+			termes.length < 9 &&
 			val !== "=" &&
 			val !== "." &&
-			val !== "+" &&
+			// val !== "+" &&
 			val !== "-" &&
 			val !== "X" &&
 			val !== "/" &&
 			val !== "%"
 		) {
-			premierTerme += val;
-			screen.innerHTML = premierTerme;
-		} else {
-			secondTerme += val;
-			screen.innerHTML = secondTerme;
-			console.log("secondterme = " + secondTerme);
+			termes += val;
+			screen.innerHTML = termes;
 		}
 
 		if (
@@ -31,14 +28,25 @@ for (let i = 0; i < btn.length; i++) {
 			val === "/" ||
 			val === "%"
 		) {
-			screen.innerHTML = "";
-			console.log(status);
+			// screen.innerHTML = "";
+			termesArray.push(termes);
+			termesArray.push(val);
+			// termes = "";
+		}
+		if (val === "=") {
+			termesArray.push(termes);
+			// let i = termesArray.length;
+			// result = Number(termesArray[0]) + Number(termesArray[2]);
+			// screen.innerHTML = result;
+			result = eval(termes);
+			screen.innerHTML=result
+			termes=""
 		}
 
 		if (val === "AC") {
 			screen.innerHTML = "";
-			premierTerme = "";
+			termes = "";
+			termesArray.length = 0;
 		}
-		// console.log(premierTerme);
 	});
 }
