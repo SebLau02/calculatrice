@@ -19,7 +19,8 @@ body {
 }
 .screen {
 	width: auto;
-	height: 100%;
+	min-height: 100%;
+	height: auto;
 	font-size: 50px;
 	background: #1a5612;
 	border-radius: 5px;
@@ -68,16 +69,14 @@ body {
 	transform: translate(3px, 3px);
 }
 .calculator-button-container :nth-child(1) {
+	grid-row: 1/2;
 	grid-column: 1 / 2;
 	background: #a50e0e;
 }
-.calculator-button-container :nth-child(2) {
-	grid-column: 3 / 4;
-}
-.calculator-button-container :nth-child(15) {
+.calculator-button-container :nth-child(16) {
 	grid-row: span 2;
 	height: 100%;
 }
-.calculator-button-container :nth-child(17) {
+.calculator-button-container :nth-child(18) {
 	background: #72e08c;
 }

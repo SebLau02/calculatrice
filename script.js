@@ -7,46 +7,47 @@ let result = 0;
 for (let i = 0; i < btn.length; i++) {
 	btn[i].addEventListener("click", (e) => {
 		const val = btn[i].value;
+
 		if (
-			termes.length < 9 &&
 			val !== "=" &&
-			val !== "." &&
-			// val !== "+" &&
+			val !== "%" &&
+			val !== "+" &&
 			val !== "-" &&
-			val !== "X" &&
-			val !== "/" &&
-			val !== "%"
+			val !== "*" &&
+			val !== "/"
 		) {
 			termes += val;
 			screen.innerHTML = termes;
 		}
 
-		if (
-			val === "+" ||
-			val === "-" ||
-			val === "X" ||
-			val === "/" ||
-			val === "%"
-		) {
-			// screen.innerHTML = "";
-			termesArray.push(termes);
-			termesArray.push(val);
-			// termes = "";
-		}
 		if (val === "=") {
-			termesArray.push(termes);
-			// let i = termesArray.length;
-			// result = Number(termesArray[0]) + Number(termesArray[2]);
-			// screen.innerHTML = result;
 			result = eval(termes);
-			screen.innerHTML=result
-			termes=""
+			screen.innerHTML = result;
 		}
 
 		if (val === "AC") {
 			screen.innerHTML = "";
 			termes = "";
-			termesArray.length = 0;
+		}
+		if (val === "+" || val === "-" || val === "*" || val === "/") {
+			termes += val;
+			screen.innerHTML = termes;
 		}
 	});
 }
+
+window.addEventListener("keydown", (e) => {
+	if (e.key !== "=" && e.key !== "Backspace" && e.key !== "Enter") {
+		termes += e.key;
+		screen.innerHTML = termes;
+	}
+
+	if (e.key === "=" || e.key === "Enter") {
+		result = eval(termes);
+		screen.innerHTML = result;
+	}
+	if (e.key === "Backspace") {
+		termes = termes.substring(0, termes.length - 1);
+		screen.innerHTML = termes;
+	}
+});
